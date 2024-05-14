@@ -1,6 +1,8 @@
 import 'package:app2/keepAliveWrapper.dart';
+import 'package:app2/page0_trends.dart';
+import 'package:app2/page1_feed.dart';
+import 'package:app2/page2_community.dart';
 import 'package:flutter/material.dart';
-import 'package:app2/lodingListView.dart';
 
 void main() {
   runApp(const LimeApp());
@@ -38,7 +40,9 @@ class _MainPageState extends State<MainPage> {
   /// 0: trends
   /// 1: feed
   /// 2: community
-  int _page = 0;
+  int _pageIdx = 0;
+  List<Widget> _pages = [];
+  List<BottomNavigationBarItem> _navs = [];
 
   @override
   Widget build(BuildContext context) {
@@ -46,40 +50,15 @@ class _MainPageState extends State<MainPage> {
         body: PageView(
           controller: _pageController,
           onPageChanged: onPageChanged,
-          children: [
-            KeepAliveWrapper(
-              keepAlive: true,
-              child: Container(
-                color: Colors.red,
-                child: LodingListView(),
-              ),
-            ),
-            Container(color: Colors.blue),
-            Container(color: Colors.grey)
-          ],
+          children: _pages,
         ),
         bottomNavigationBar: BottomNavigationBar(
-            onTap: navigationTapped,
-            currentIndex: _page,
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.add),
-                label: "trends",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.location_on),
-                label: "feed",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.people),
-                label: "社区",
-              ),
-            ]));
+            onTap: navigationTapped, currentIndex: _pageIdx, items: _navs));
   }
 
   void onPageChanged(int page) {
     setState(() {
-      _page = page;
+      _pageIdx = page;
     });
   }
 
@@ -91,7 +70,38 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
+    _pages
+      ..add(KeepAliveWrapper(
+        keepAlive: true,
+        child: Container(
+          color: Colors.red,
+          child: TrendsPage("Trends"),
+        ),
+      ))
+      ..add(Container(
+        color: Colors.blue,
+        child: FeedPage("feed"),
+      ))
+      ..add(Container(
+        color: Colors.grey,
+        child: CommunityPage("社区"),
+      ));
     _pageController = PageController();
+
+    _navs = [
+      BottomNavigationBarItem(
+        icon: Icon(Icons.add),
+        label: "trends",
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.location_on),
+        label: "feed",
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.people),
+        label: "社区",
+      ),
+    ];
   }
 
   @override
