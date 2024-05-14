@@ -1,5 +1,6 @@
+import 'package:app2/keepAliveWrapper.dart';
 import 'package:flutter/material.dart';
-import './lodinglist.dart';
+import 'package:app2/lodingListView.dart';
 
 void main() {
   runApp(const LimeApp());
@@ -46,9 +47,12 @@ class _MainPageState extends State<MainPage> {
           controller: _pageController,
           onPageChanged: onPageChanged,
           children: [
-            Container(
-              color: Colors.red,
-              child: LodingListView(),
+            KeepAliveWrapper(
+              keepAlive: true,
+              child: Container(
+                color: Colors.red,
+                child: LodingListView(),
+              ),
             ),
             Container(color: Colors.blue),
             Container(color: Colors.grey)
