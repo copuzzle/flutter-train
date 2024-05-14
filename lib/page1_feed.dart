@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:app2/page1_1_sub.dart';
 
 class FeedPage extends StatefulWidget {
   final String _title;
@@ -19,7 +20,17 @@ class FeedPageState extends State<FeedPage> {
         title: Text(widget._title),
       ),
       body: Center(
-        child: Text("${widget._title}:click add 1：$_count"),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text("${widget._title}:点一下加1：$_count"),
+            MaterialButton(
+                color: Colors.blue,
+                onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => NewPage())),
+                child: Text("跳转"))
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
           heroTag: widget._title, onPressed: add, child: Icon(Icons.add)),
