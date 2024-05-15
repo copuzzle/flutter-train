@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-// import 'package:app2/keepAliveWrapper.dart';
-import 'package:app2/tabItem.dart';
-import 'package:app2/bottomNavigator.dart';
+import 'package:app2/tab_item.dart';
+import 'package:app2/bottom_navigator.dart';
 import 'package:app2/page0_trendsNavigator.dart';
-import 'package:app2/page1_feedNavigator.dart';
+import 'package:app2/page1_feed_vavigator.dart';
 import 'package:app2/page2_community.dart';
 
 class LimeApp extends StatelessWidget {
@@ -94,14 +93,4 @@ class _MainPageState extends State<MainPage> {
       ),
     );
   }
-
-  // Widget _buildOffstageNavigator(TabItem tabItem) {
-  //   return Offstage(
-  //     offstage: _currentTab != tabItem,
-  //     child: TabNavigator(
-  //       navigatorKey: _navigatorKeys[tabItem],
-  //       tabItem: tabItem,
-  //     ),
-  //   );
-  // }
 }

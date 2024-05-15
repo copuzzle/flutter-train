@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:app2/page0_trends.dart';
 import 'package:app2/page0_detail.dart';
-import 'package:app2/tabItem.dart';
+import 'package:app2/tab_item.dart';
 
 class TrendsNavigatorRoutes {
   static const String root = '/';

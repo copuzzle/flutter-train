@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:app2/keepAliveWrapper.dart';
-import 'package:app2/lodingListView.dart';
+import 'package:app2/keep_alive_wrapper.dart';
+import 'package:app2/loding_list_view.dart';
 
 class TrendsPage extends StatefulWidget {
   TrendsPage(
