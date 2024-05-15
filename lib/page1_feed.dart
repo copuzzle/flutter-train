@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:app2/page1_1_sub.dart';
+import 'package:app2/page1_detail.dart';
 
 class FeedPage extends StatefulWidget {
-  final String _title;
-
-  FeedPage(this._title);
+  FeedPage({super.key, required this.title, this.onPush});
+  final String title;
+  final ValueChanged<int>? onPush;
 
   @override
   State<StatefulWidget> createState() => FeedPageState();
@@ -17,23 +17,25 @@ class FeedPageState extends State<FeedPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget._title),
+        title: Text(widget.title),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text("${widget._title}:点一下加1：$_count"),
+            Text("${widget.title}:点一下加1：$_count"),
             MaterialButton(
                 color: Colors.blue,
-                onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => NewPage())),
+                onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => NewPage(title: widget.title))),
                 child: Text("跳转"))
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-          heroTag: widget._title, onPressed: add, child: Icon(Icons.add)),
+          heroTag: widget.title, onPressed: add, child: Icon(Icons.add)),
     );
   }
 

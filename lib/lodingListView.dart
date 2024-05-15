@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 
 class LodingListView extends StatefulWidget {
+  const LodingListView(this.onPush);
   @override
   LodingListViewState createState() => LodingListViewState();
+  final ValueChanged<int>? onPush;
 }
 
 class LodingListViewState extends State<LodingListView> {
@@ -80,7 +82,9 @@ class LodingListViewState extends State<LodingListView> {
           return Center(child: CircularProgressIndicator());
         } else {
           return ListTile(
-            title: Text(_list[index]),
+            title: Text(_list[index], style: const TextStyle(fontSize: 24.0)),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => widget.onPush?.call(index),
           );
         }
       },

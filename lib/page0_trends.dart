@@ -3,9 +3,11 @@ import 'package:app2/keepAliveWrapper.dart';
 import 'package:app2/lodingListView.dart';
 
 class TrendsPage extends StatefulWidget {
+  TrendsPage(
+      {super.key, required this.title, required this.color, this.onPush});
   final String title;
-
-  TrendsPage(this.title);
+  final MaterialColor color;
+  final ValueChanged<int>? onPush;
 
   @override
   State<StatefulWidget> createState() => TrendsPageState();
@@ -22,7 +24,7 @@ class TrendsPageState extends State<TrendsPage> {
         keepAlive: true,
         child: Container(
           color: Colors.red,
-          child: LodingListView(),
+          child: LodingListView(widget.onPush),
         ),
       ),
     );
