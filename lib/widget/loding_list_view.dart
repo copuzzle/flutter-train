@@ -82,11 +82,15 @@ class LodingListViewState extends State<LodingListView> {
           return Center(child: CircularProgressIndicator());
         } else {
           final name = _list[index];
-          return ListTile(
-            title: Text(name, style: const TextStyle(fontSize: 20.0)),
-            trailing: const Icon(Icons.chevron_right),
-            onTap: () => widget.onPush?.call(index),
-          );
+          return Card(
+              child: ListTile(
+                  onTap: () => widget.onPush?.call(index),
+                  title: Text(name, style: const TextStyle(fontSize: 20.0)),
+                  subtitle: Text(name, style: const TextStyle(fontSize: 20.0)),
+                  leading: CircleAvatar(
+                      backgroundImage: NetworkImage(
+                          "https://images.unsplash.com/photo-1547721064-da6cfb341d50")),
+                  trailing: Icon(Icons.chevron_right)));
         }
       },
     );

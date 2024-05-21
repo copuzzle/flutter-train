@@ -17,6 +17,14 @@ class ProjectPageState extends State<ProjectPage> {
     return Scaffold(
       appBar: LimpAppBar(
         title: Text(widget.title),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              widget.onPush!(500);
+            },
+          ),
+        ],
       ),
       body: Container(
         color: Colors.white,

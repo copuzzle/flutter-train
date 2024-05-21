@@ -29,6 +29,3 @@ class ProjectDetailPage extends StatelessWidget {
     );
   }
 }
-// OnesDivider(
-//               color: bottomDividerLineColor ?? OnesColors.appBottomLineColor,
-//             ));
