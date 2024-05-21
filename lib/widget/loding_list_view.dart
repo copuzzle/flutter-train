@@ -81,8 +81,9 @@ class LodingListViewState extends State<LodingListView> {
         if (index == _list.length) {
           return Center(child: CircularProgressIndicator());
         } else {
+          final name = _list[index];
           return ListTile(
-            title: Text(_list[index], style: const TextStyle(fontSize: 24.0)),
+            title: Text(name, style: const TextStyle(fontSize: 20.0)),
             trailing: const Icon(Icons.chevron_right),
             onTap: () => widget.onPush?.call(index),
           );
