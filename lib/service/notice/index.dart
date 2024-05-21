@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class CommunityPage extends StatefulWidget {
+class IndexPage extends StatefulWidget {
   final String _title;
 
-  CommunityPage(this._title);
+  IndexPage(this._title);
 
   @override
-  State<StatefulWidget> createState() => CommunityPageState();
+  State<StatefulWidget> createState() => IndexPageState();
 }
 
-class CommunityPageState extends State<CommunityPage> {
+class IndexPageState extends State<IndexPage> {
   int _count = 0;
 
   @override

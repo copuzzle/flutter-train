@@ -1,44 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:app2/page0_trends.dart';
-import 'package:app2/page0_detail.dart';
-import 'package:app2/tab_item.dart';
+import 'package:app2/service/project/index_page.dart';
+import 'package:app2/service/project/detail.dart';
 
-class TrendsNavigatorRoutes {
+class ProjectNavigatorRoutes {
   static const String root = '/';
   static const String detail = '/detail';
 }
 
-class TrendsNavigator extends StatelessWidget {
-  const TrendsNavigator(
-      {super.key, required this.navigatorKey, required this.tabItem});
+class ProjectNavigator extends StatelessWidget {
+  const ProjectNavigator({super.key, required this.navigatorKey});
 
   final GlobalKey<NavigatorState>? navigatorKey;
-  final TabItem tabItem;
 
   void _push(BuildContext context, {int materialIndex = 500}) {
-    var routeBuilders = _routeBuilders(context, materialIndex: materialIndex);
+    var routeBuilders = _routeBuilders(context,
+        materialIndex: materialIndex, title: "dynamic project name");
 
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) =>
-            routeBuilders[TrendsNavigatorRoutes.detail]!(context),
+            routeBuilders[ProjectNavigatorRoutes.detail]!(context),
       ),
     );
   }
 
   Map<String, WidgetBuilder> _routeBuilders(BuildContext context,
-      {int materialIndex = 500}) {
+      {int materialIndex = 500, String title = ""}) {
     return {
-      TrendsNavigatorRoutes.root: (context) => TrendsPage(
-            color: tabItem.color,
-            title: tabItem.name,
+      ProjectNavigatorRoutes.root: (context) => ProjectPage(
+            title: "Projects",
             onPush: (materialIndex) =>
                 _push(context, materialIndex: materialIndex),
           ),
-      TrendsNavigatorRoutes.detail: (context) => ColorDetailPage(
-            color: tabItem.color,
-            title: tabItem.name,
+      ProjectNavigatorRoutes.detail: (context) => ProjectDetailPage(
+            title: title,
             materialIndex: materialIndex,
           ),
     };
@@ -49,7 +45,7 @@ class TrendsNavigator extends StatelessWidget {
     final routeBuilders = _routeBuilders(context);
     return Navigator(
       key: navigatorKey,
-      initialRoute: TrendsNavigatorRoutes.root,
+      initialRoute: ProjectNavigatorRoutes.root,
       onGenerateRoute: (routeSettings) {
         return MaterialPageRoute(
           builder: (context) => routeBuilders[routeSettings.name!]!(context),

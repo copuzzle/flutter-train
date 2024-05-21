@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:app2/tab_item.dart';
-import 'package:app2/bottom_navigator.dart';
-import 'package:app2/page0_trendsNavigator.dart';
-import 'package:app2/page1_feed_vavigator.dart';
-import 'package:app2/page2_community.dart';
+import 'package:app2/app_tab.dart';
+import 'package:app2/app_bottom_navigator.dart';
+import 'package:app2/service/project/index_navigator.dart';
+import 'package:app2/service/task/index_navigator.dart';
+import 'package:app2/service/notice/index.dart';
 
 class LimeApp extends StatelessWidget {
   const LimeApp({super.key});
@@ -75,19 +75,18 @@ class _MainPageState extends State<MainPage> {
         body: Stack(children: <Widget>[
           Offstage(
             offstage: _currentTab != TabItem.red,
-            child: TrendsNavigator(
+            child: ProjectNavigator(
               navigatorKey: _navigatorKeys[TabItem.red],
-              tabItem: TabItem.red,
             ),
           ),
           Offstage(
               offstage: _currentTab != TabItem.green,
-              child: FeedNavigator(
+              child: FilterNavigator(
                 navigatorKey: _navigatorKeys[TabItem.green],
               )),
           Offstage(
             offstage: _currentTab != TabItem.blue,
-            child: CommunityPage("mememe"),
+            child: IndexPage("mememe"),
           ),
         ]),
         bottomNavigationBar: BottomNavigation(

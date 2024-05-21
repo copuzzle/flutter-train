@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:app2/tab_item.dart';
+import 'package:app2/app_tab.dart';
 
 class BottomNavigation extends StatelessWidget {
   const BottomNavigation(
@@ -14,7 +14,7 @@ class BottomNavigation extends StatelessWidget {
       items: [
         _buildItem(TabItem.red, Icons.add),
         _buildItem(TabItem.green, Icons.location_on),
-        _buildItem(TabItem.blue,Icons.people),
+        _buildItem(TabItem.blue, Icons.people),
       ],
       onTap: (index) => onSelectTab(
         TabItem.values[index],

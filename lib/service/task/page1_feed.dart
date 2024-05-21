@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:app2/page1_detail.dart';
+import 'package:app2/service/task/detail.dart';
 
-class FeedPage extends StatefulWidget {
-  FeedPage({super.key, required this.title, this.onPush});
+class FilterPage extends StatefulWidget {
+  FilterPage({super.key, required this.title, this.onPush});
   final String title;
   final ValueChanged<int>? onPush;
 
   @override
-  State<StatefulWidget> createState() => FeedPageState();
+  State<StatefulWidget> createState() => FilterPageState();
 }
 
-class FeedPageState extends State<FeedPage> {
+class FilterPageState extends State<FilterPage> {
   int _count = 0;
 
   @override
@@ -29,7 +29,7 @@ class FeedPageState extends State<FeedPage> {
                 onPressed: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => NewPage(title: widget.title))),
+                        builder: (context) => DetailPage(title: widget.title))),
                 child: Text("跳转"))
           ],
         ),
