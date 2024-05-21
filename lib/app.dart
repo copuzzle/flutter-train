@@ -32,7 +32,6 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  // PageController? _pageController;
   var _currentTab = TabItem.red;
   final _navigatorKeys = {
     TabItem.red: GlobalKey<NavigatorState>(),
@@ -51,9 +50,14 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        final isFirstRouteInCurrentTab =
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (bool didPop) => (didPop) async {
+        //app platform back button related, may should need to be debug
+        if (didPop) {
+          return false;
+        }
+        final bool isFirstRouteInCurrentTab =
             !await _navigatorKeys[_currentTab]!.currentState!.maybePop();
         if (isFirstRouteInCurrentTab) {
           // if not on the 'main' tab
